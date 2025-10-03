@@ -1,0 +1,7 @@
+# Ignore generated files
+plugin/
+lazy-lock.json
+
+# Node projects if used
+node_modules/
+
