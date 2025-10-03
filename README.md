@@ -86,19 +86,13 @@ Copy code
 - (Optional) [Ripgrep](https://github.com/BurntSushi/ripgrep) for Telescope live grep
 
 ### 2. Clone the Config
-Backup your old config first:
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak
-Then clone this repo:
 
-bash
-Copy code
 git clone https://github.com/kabirajpan/nvim-config.git ~/.config/nvim
-3. Launch Neovim
-bash
-Copy code
+
 nvim
-Lazy.nvim will automatically install and sync plugins.
+## Lazy.nvim will automatically install and sync plugins.
 
 🎹 Key Features / Shortcuts
 <leader> ff – Find files (Telescope)
