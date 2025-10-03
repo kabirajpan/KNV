@@ -4,7 +4,6 @@
 A modern, modular, and blazing fast Neovim setup powered by **Lazy.nvim**.
 It’s designed to be **modular, fast, and developer-friendly**, with features for **coding, git, UI enhancements, and productivity**.
 
----
 
 ## 📂 Project Structure
 
@@ -56,11 +55,6 @@ It’s designed to be **modular, fast, and developer-friendly**, with features f
 └── snippets # Custom snippets
 ├── html.lua
 └── react.lua
-
-markdown
-Copy code
-
----
 
 ## ✨ Features
 
