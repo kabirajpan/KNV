@@ -89,7 +89,7 @@ Copy code
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 
-git clone https://github.com/kabirajpan/nvim-config.git ~/.config/nvim
+git clone https://github.com/kabirajpan/KNV.git ~/.config/nvim
 
 nvim
 ## Lazy.nvim will automatically install and sync plugins.
