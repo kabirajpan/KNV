@@ -59,7 +59,9 @@ return {
       end, { desc = "Toggle Codeium" })
     end
     
-    -- Set keymaps after a brief delay to ensure Codeium is loaded
-    vim.defer_fn(set_codeium_keymaps, 100)
+    -- FIXED: Use vim.schedule instead of vim.schedule_callback
+    vim.schedule(function()
+      set_codeium_keymaps()
+    end)
   end,
 }
