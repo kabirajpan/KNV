@@ -107,6 +107,10 @@ map("n", "<C-v>", '"+p', opts)                -- Paste in normal mode
 map("v", "<C-v>", '"+p', opts)                -- Paste over selection
 map("i", "<C-v>", '<C-r>+', opts)             -- Paste in insert mode
 
+
+map("c", "<C-v>", '<C-r>+', opts)             -- Paste in command mode
+
+
 -- Save (Ctrl+S)
 map("n", "<C-s>", ":w<CR>", opts)
 map("i", "<C-s>", "<C-o>:w<CR>", opts)
@@ -551,6 +555,10 @@ map({"n", "i", "v"}, "<C-`>", "<cmd>ToggleTerm<cr>", opts)
 map("t", "<C-`>", "<cmd>ToggleTerm<cr>", opts)
 map("t", "<Esc>", "<C-\\><C-n>", opts)
 
+-- Terminal Copy/Paste (ADD THESE NEW LINES)
+map("t", "<C-S-v>", '<C-\\><C-n>"+pi', opts)  -- Paste with Ctrl+Shift+V
+map("t", "<S-Insert>", '<C-\\><C-n>"+pi', opts)  -- Paste with Shift+Insert
+
 -- =============================
 -- LSP Keymaps
 -- =============================
@@ -752,4 +760,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 ]]--
+
+
 

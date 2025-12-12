@@ -5,7 +5,8 @@
 A modern, modular, and blazing fast Neovim setup powered by **Lazy.nvim**.  
 Designed to be **modular, fast, and developer-friendly**, with features for **coding, Git, UI enhancements, and productivity**.
 
-> 🎉 **Optimized for Pop OS 24.04 Cosmic Desktop** (Released December 11, 2025)
+> 🎉 **Optimized for Pop OS 24.04 Cosmic Desktop** (Released December 11, 2025)  
+> 🖥️ **Full Neovide Support** with proper keybindings and clipboard integration
 
 ---
 
@@ -69,31 +70,32 @@ Designed to be **modular, fast, and developer-friendly**, with features for **co
 
 ### 🚀 Core Features
 
-- ⚡ **Lazy.nvim** – Modern plugin manager with lazy loading
-- 🎨 **Gruvbox Theme** – Beautiful dark colorscheme
-- 🖥️ **VS Code-style Keybindings** – Familiar shortcuts (Ctrl+C/V/Z, etc.)
-- 🔄 **Wayland Clipboard Support** – Works perfectly with Pop OS Cosmic
-- 📦 **45+ Plugins** – Carefully curated for productivity
+- ⚡ **Lazy.nvim** — Modern plugin manager with lazy loading
+- 🎨 **Gruvbox Theme** — Beautiful dark colorscheme
+- 🖥️ **VS Code-style Keybindings** — Familiar shortcuts (Ctrl+C/V/Z, etc.)
+- 🔄 **Wayland Clipboard Support** — Works perfectly with Pop OS Cosmic
+- 🖼️ **Neovide Support** — Optimized for the Neovide GUI client
+- 📦 **45+ Plugins** — Carefully curated for productivity
 
 ### 🎨 UI Enhancements
 
-- **Lualine** – Beautiful statusline with AI integration indicators
-- **Bufferline** – Tab-like buffer management
-- **Dashboard** – Custom start screen
-- **Notify** – Beautiful notifications
-- **Barbecue** – Breadcrumb navigation
-- **Indent Guides** – Visual indentation lines
+- **Lualine** — Beautiful statusline with AI integration indicators
+- **Bufferline** — Tab-like buffer management
+- **Dashboard** — Custom start screen
+- **Notify** — Beautiful notifications
+- **Barbecue** — Breadcrumb navigation
+- **Indent Guides** — Visual indentation lines
 
 ### 🔍 Navigation & Search
 
-- **Telescope** – Fuzzy finder for files, grep, buffers
-- **Nvim-tree** – File explorer with mouse support
-- **Project.nvim** – Automatic project detection
-- **Which-key** – Interactive keybinding guide
+- **Telescope** — Fuzzy finder for files, grep, buffers
+- **Nvim-tree** — File explorer with mouse support
+- **Project.nvim** — Automatic project detection
+- **Which-key** — Interactive keybinding guide
 
 ### 🧠 Code Intelligence
 
-- **LSP Support** – 20+ language servers configured:
+- **LSP Support** — 20+ language servers configured:
   - TypeScript/JavaScript (ts_ls)
   - Python (pyright)
   - Rust (rust-analyzer)
@@ -101,36 +103,36 @@ Designed to be **modular, fast, and developer-friendly**, with features for **co
   - C/C++ (clangd)
   - HTML/CSS (html, cssls)
   - And many more...
-- **Treesitter** – Advanced syntax highlighting
-- **Autocompletion** – nvim-cmp with multiple sources
-- **Code Formatting** – conform.nvim with prettier, stylua
+- **Treesitter** — Advanced syntax highlighting
+- **Autocompletion** — nvim-cmp with multiple sources
+- **Code Formatting** — conform.nvim with prettier, stylua
 
 ### 🤖 AI Integration
 
-- **GitHub Copilot** – AI pair programming
-- **Codeium** – Free AI code completion
-- **F9** – Toggle between Copilot ↔ Codeium
-- **F10** – Enable/Disable all AI
+- **GitHub Copilot** — AI pair programming
+- **Codeium** — Free AI code completion
+- **F9** — Toggle between Copilot ↔ Codeium
+- **F10** — Enable/Disable all AI
 
-### 🔄 Git Integration
+### 📄 Git Integration
 
-- **Fugitive** – Full Git workflow
-- **LazyGit** – Beautiful Git UI
-- **Gitsigns** – Git changes in gutter
-- **Diffview** – Advanced diff viewer
+- **Fugitive** — Full Git workflow
+- **LazyGit** — Beautiful Git UI
+- **Gitsigns** — Git changes in gutter
+- **Diffview** — Advanced diff viewer
 
 ### 📝 Productivity Tools
 
-- **Autopairs** – Auto-close brackets
-- **Autotag** – Auto-close HTML/JSX tags
-- **Comment.nvim** – Toggle comments (Ctrl+/)
-- **Surround** – Manipulate surrounding characters
-- **ToggleTerm** – Integrated terminal
-- **Session Management** – Auto-save/restore sessions
+- **Autopairs** — Auto-close brackets
+- **Autotag** — Auto-close HTML/JSX tags
+- **Comment.nvim** — Toggle comments (Ctrl+/)
+- **Surround** — Manipulate surrounding characters
+- **ToggleTerm** — Integrated terminal
+- **Session Management** — Auto-save/restore sessions
 
 ### 📱 Android Development
 
-- **Android.nvim** – Android project support
+- **Android.nvim** — Android project support
 - Gradle integration
 - Logcat viewer
 
@@ -181,6 +183,18 @@ sudo apt install fd-find
 # A Nerd Font (for icons)
 # Download from: https://www.nerdfonts.com/
 # Recommended: JetBrainsMono Nerd Font, FiraCode Nerd Font
+```
+
+**Optional - Neovide GUI:**
+
+```bash
+# Install Neovide for a beautiful GUI experience
+# Download from: https://neovide.dev/
+# Or via Snap:
+sudo snap install neovide
+
+# Or build from source:
+cargo install --git https://github.com/neovide/neovide
 ```
 
 **Optional Language Tools:**
@@ -236,6 +250,9 @@ brew install fd
 # A Nerd Font
 brew tap homebrew/cask-fonts
 brew install --cask font-jetbrains-mono-nerd-font
+
+# Neovide GUI (optional)
+brew install --cask neovide
 ```
 
 **Optional Language Tools:**
@@ -281,6 +298,11 @@ choco install neovim git
 
 # Install Build Tools
 # Download Visual Studio Build Tools from Microsoft
+
+# Neovide GUI (optional)
+scoop install neovide
+# or
+choco install neovide
 
 # Clipboard should work natively on Windows
 ```
@@ -348,6 +370,9 @@ sudo pacman -S ripgrep fd
 
 # Nerd Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd
+
+# Neovide GUI (optional)
+sudo pacman -S neovide
 ```
 
 **Optional Language Tools:**
@@ -398,6 +423,10 @@ sudo dnf groupinstall "Development Tools"
 ```bash
 # Ripgrep & fd
 sudo dnf install ripgrep fd-find
+
+# Neovide GUI (optional)
+# Build from source or use Flatpak
+flatpak install flathub com.neovide.neovide
 ```
 
 **Optional Language Tools:**
@@ -429,6 +458,8 @@ git clone https://github.com/kabirajpan/KNV.git ~/.config/nvim
 
 # Open Neovim - plugins will auto-install
 nvim
+# Or with Neovide
+neovide
 ```
 
 ### 3. Post-Installation
@@ -499,7 +530,7 @@ nvim
 | `Alt+]`     | Next Codeium suggestion     |
 | `Alt+[`     | Previous Codeium suggestion |
 
-### 🔤 LSP (Code Intelligence)
+### 📤 LSP (Code Intelligence)
 
 | Shortcut      | Action              |
 | ------------- | ------------------- |
@@ -531,6 +562,16 @@ nvim
 | `Ctrl+`` | Toggle terminal    |
 | `Esc`    | Exit terminal mode |
 
+### 🖼️ Neovide-Specific
+
+| Shortcut  | Action            |
+| --------- | ----------------- |
+| `Ctrl+=`  | Increase zoom     |
+| `Ctrl+-`  | Decrease zoom     |
+| `Ctrl+0`  | Reset zoom        |
+| `Ctrl+V`  | Paste (any mode)  |
+| `Ctrl+Sh+V` | Paste in command mode |
+
 ---
 
 ## 🛠️ Customization
@@ -558,7 +599,7 @@ Edit `lua/plugins/gruvbox.lua` or add a new theme plugin.
 Edit:
 
 - `lua/core/keymaps.lua` - Core keymaps
-- `keymaps.lua` (root) - VS Code-style keymaps
+- `init.lua` - Neovide-specific keymaps
 
 ### LSP Configuration
 
@@ -697,6 +738,35 @@ wsl --install
 </details>
 
 <details>
+<summary><b>🖼️ Neovide Issues</b></summary>
+
+**File explorer (Ctrl+E) not working**
+
+Already fixed in `init.lua` - the config includes Neovide-specific keymaps that load after plugins.
+
+**Paste not working in command mode**
+
+Use `Ctrl+Shift+V` in command mode (`:`) in Neovide instead of `Ctrl+V`.
+
+**Fonts/icons not showing**
+
+```bash
+# Install a Nerd Font and set it in your terminal
+# Neovide should detect it automatically
+# Or set it in Neovide config: ~/.config/neovide/config.toml
+```
+
+**Neovide slow/laggy**
+
+```vim
+" Adjust these in init.lua:
+vim.g.neovide_refresh_rate = 60
+vim.g.neovide_cursor_animation_length = 0.05
+```
+
+</details>
+
+<details>
 <summary><b>🌐 General Issues</b></summary>
 
 **Neovim version too old**
@@ -756,6 +826,7 @@ nvim --startuptime startup.log
 - ✅ **Windows 11 (via WSL2)**
 - ✅ **Neovim 0.11+**
 - ✅ **Wayland + X11**
+- ✅ **Neovide GUI Client**
 
 ---
 
@@ -764,6 +835,7 @@ nvim --startuptime startup.log
 Built with these amazing projects:
 
 - [Neovim](https://neovim.io/)
+- [Neovide](https://neovide.dev/)
 - [Lazy.nvim](https://github.com/folke/lazy.nvim)
 - [Gruvbox](https://github.com/morhetz/gruvbox)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
