@@ -4,7 +4,7 @@ return {
   config = function()
     require("persisted").setup({
       autosave = true,
-      autoload = true,
+      autoload = false,
       should_autosave = function()
         -- Don’t save sessions for git commit messages or temporary buffers
         return vim.bo.filetype ~= "gitcommit" and not vim.bo.readonly
