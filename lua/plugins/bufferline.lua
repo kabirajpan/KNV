@@ -9,50 +9,29 @@ return {
     require("bufferline").setup {
       options = {
         mode = "buffers",
-        separator_style = "slant",
-        show_buffer_close_icons = true,
-        show_close_icon = true,
-        show_tab_indicators = true,
+        separator_style = "thin",
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        show_tab_indicators = false,
         show_buffer_icons = true,
         always_show_bufferline = true,
         enforce_regular_tabs = false,
-        tab_size = 16,
-        max_name_length = 20,
-        max_prefix_length = 10,
-        diagnostics = "nvim_lsp",  -- Show LSP errors/warnings in buffers
-        diagnostics_update_in_insert = false,
-        diagnostics_indicator = function(count, level)
-          local icon = level:match("error") and " " or " "
-          return icon .. count
-        end,
-        custom_filter = function(buf_number)
-          -- Filter out certain buffers
-          if vim.fn.getbufvar(buf_number, "&buftype") ~= "" then
-            return false
-          end
-          return true
-        end,
+        tab_size = 18,
+        max_name_length = 25,
+        max_prefix_length = 3,
+        diagnostics = nil,
         offsets = {
           {
             filetype = "NvimTree",
-            text = "  File Explorer",
+            text = "Files",
             text_align = "left",
-            separator = true,
-            highlight = "PanelHeading",
+            separator = false,
           },
         },
       },
-      highlights = {
-        fill = {
-          bg = "#1d2021"
-        },
-        background = {
-          fg = "#928374",
-          bg = "#282828"
-        },
-      }
     }
 
   end,
 }
+
 
