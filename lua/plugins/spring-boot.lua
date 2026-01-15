@@ -27,6 +27,15 @@ return {
 				end
 			end
 
+			-- Helper: Get wrapper command (cross-platform)
+			local function get_wrapper_cmd(tool)
+				local base = tool == "mvn" and "mvnw" or "gradlew"
+				if vim.fn.has("win32") == 1 then
+					return base .. ".bat"
+				end
+				return "./" .. base
+			end
+
 			-- ===============================
 			-- Spring Boot Commands
 			-- ===============================
@@ -39,9 +48,9 @@ return {
 				end
 
 				if tool == "mvn" then
-					run_terminal("./mvnw spring-boot:run", "Spring Boot (Maven)")
+					run_terminal(get_wrapper_cmd("mvn") .. " spring-boot:run", "Spring Boot (Maven)")
 				else
-					run_terminal("./gradlew bootRun", "Spring Boot (Gradle)")
+					run_terminal(get_wrapper_cmd("gradle") .. " bootRun", "Spring Boot (Gradle)")
 				end
 			end, { desc = "Run Spring Boot application" })
 
@@ -53,9 +62,9 @@ return {
 				end
 
 				if tool == "mvn" then
-					run_terminal("./mvnw clean package", "Build (Maven)")
+					run_terminal(get_wrapper_cmd("mvn") .. " clean package", "Build (Maven)")
 				else
-					run_terminal("./gradlew build", "Build (Gradle)")
+					run_terminal(get_wrapper_cmd("gradle") .. " build", "Build (Gradle)")
 				end
 			end, { desc = "Build Spring Boot project" })
 
@@ -67,9 +76,9 @@ return {
 				end
 
 				if tool == "mvn" then
-					run_terminal("./mvnw test", "Tests (Maven)")
+					run_terminal(get_wrapper_cmd("mvn") .. " test", "Tests (Maven)")
 				else
-					run_terminal("./gradlew test", "Tests (Gradle)")
+					run_terminal(get_wrapper_cmd("gradle") .. " test", "Tests (Gradle)")
 				end
 			end, { desc = "Run Spring Boot tests" })
 

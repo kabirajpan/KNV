@@ -635,8 +635,9 @@ map("n", "N", "Nzzzv", opts)
 -- F9: Toggle AI (Copilot <-> Codeium)
 vim.keymap.set("n", "<F9>", function()
 	local copilot_active = false
-	local codeium_active = vim.g.codeium_enabled ~= false
+	local codeium_active = false
 
+	-- Check Copilot
 	local ok_copilot, copilot = pcall(require, "copilot.api")
 	if ok_copilot and copilot.status and copilot.status.data then
 		local status = copilot.status.data.status
@@ -645,33 +646,35 @@ vim.keymap.set("n", "<F9>", function()
 		end
 	end
 
+	-- Check Codeium
+	local codeium_ok, codeium_enabled = pcall(vim.fn["codeium#Enabled"])
+	if codeium_ok and codeium_enabled == 1 then
+		codeium_active = true
+	end
+
 	if copilot_active then
+		-- Switch to Codeium
 		vim.cmd("Copilot disable")
 		if ok_copilot then
 			copilot.status.data.status = "Disabled"
 		end
 
-		if pcall(require, "codeium") then
-			pcall(vim.cmd, "CodeiumEnable")
-			vim.g.codeium_enabled = true
-			vim.notify("Codeium enabled", vim.log.levels.INFO)
-		end
+		-- Enable Codeium using VimScript function
+		pcall(vim.fn["codeium#SetEnabled"], 1)
+		vim.notify("Codeium enabled", vim.log.levels.INFO)
 	else
-		if pcall(require, "codeium") then
-			pcall(vim.cmd, "CodeiumDisable")
-			vim.g.codeium_enabled = false
-		end
+		-- Switch to Copilot
+		pcall(vim.fn["codeium#SetEnabled"], 0)
 		vim.cmd("Copilot enable")
 		vim.notify("Copilot enabled", vim.log.levels.INFO)
 	end
 
-	-- Update both UI components
+	-- Update UI components
 	local ok_barbecue, barbecue = pcall(require, "barbecue")
 	if ok_barbecue and barbecue.update then
 		barbecue.update()
 	end
 
-	-- FIX: Also refresh lualine
 	local ok_lualine, lualine = pcall(require, "lualine")
 	if ok_lualine and lualine.refresh then
 		lualine.refresh()
@@ -681,8 +684,9 @@ end, { desc = "Toggle Copilot ↔ Codeium (F9)" })
 -- F10: Enable/Disable both AI
 vim.keymap.set("n", "<F10>", function()
 	local copilot_active = false
-	local codeium_active = vim.g.codeium_enabled ~= false
+	local codeium_active = false
 
+	-- Check Copilot
 	local ok_copilot, copilot = pcall(require, "copilot.api")
 	if ok_copilot and copilot.status and copilot.status.data then
 		local status = copilot.status.data.status
@@ -691,26 +695,32 @@ vim.keymap.set("n", "<F10>", function()
 		end
 	end
 
+	-- Check Codeium
+	local codeium_ok, codeium_enabled = pcall(vim.fn["codeium#Enabled"])
+	if codeium_ok and codeium_enabled == 1 then
+		codeium_active = true
+	end
+
 	if copilot_active or codeium_active then
+		-- Disable both
 		vim.cmd("Copilot disable")
 		if ok_copilot then
 			copilot.status.data.status = "Disabled"
 		end
-		pcall(vim.cmd, "CodeiumDisable")
-		vim.g.codeium_enabled = false
+		pcall(vim.fn["codeium#SetEnabled"], 0)
 		vim.notify("AI disabled", vim.log.levels.INFO)
 	else
+		-- Enable Copilot only
 		vim.cmd("Copilot enable")
 		vim.notify("Copilot enabled", vim.log.levels.INFO)
 	end
 
-	-- Update both UI components
+	-- Update UI components
 	local ok_barbecue, barbecue = pcall(require, "barbecue")
 	if ok_barbecue and barbecue.update then
 		barbecue.update()
 	end
 
-	-- FIX: Also refresh lualine
 	local ok_lualine, lualine = pcall(require, "lualine")
 	if ok_lualine and lualine.refresh then
 		lualine.refresh()

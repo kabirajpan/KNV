@@ -19,13 +19,14 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 
 -- Fix Ctrl+Z terminal suspension (delayed to not conflict with dashboard)
+-- Only on Unix-like systems (Linux, macOS)
 vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
   once = true,
   callback = function()
     vim.defer_fn(function()
-      -- Only run if not in dashboard
-      if vim.bo.filetype ~= "dashboard" then
+      -- Only run if not in dashboard and on Unix systems
+      if vim.bo.filetype ~= "dashboard" and vim.fn.has("unix") == 1 then
         vim.fn.system("stty -ixon")
       end
     end, 200)

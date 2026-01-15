@@ -80,21 +80,32 @@ return {
 				end)
 			end
 
+			-- Helper: Get gradle/mvn wrapper command (cross-platform)
+			local function get_wrapper_cmd(base_cmd)
+				if vim.fn.has("win32") == 1 then
+					return base_cmd .. ".bat"
+				end
+				return "./" .. base_cmd
+			end
+
 			-- ===============================
 			-- Gradle Commands
 			-- ===============================
 
 			vim.api.nvim_create_user_command("AndroidBuild", function()
-				run_terminal("./gradlew assembleDebug", "Build Debug APK")
+				local cmd = get_wrapper_cmd("gradlew") .. " assembleDebug"
+				run_terminal(cmd, "Build Debug APK")
 			end, { desc = "Build debug APK" })
 
 			vim.api.nvim_create_user_command("AndroidBuildRelease", function()
-				run_terminal("./gradlew assembleRelease", "Build Release APK")
+				local cmd = get_wrapper_cmd("gradlew") .. " assembleRelease"
+				run_terminal(cmd, "Build Release APK")
 			end, { desc = "Build release APK" })
 
 			vim.api.nvim_create_user_command("AndroidInstall", function()
 				with_device(function(device)
-					run_terminal("./gradlew installDebug -Pandroid.injected.device=" .. device, "Install to " .. device)
+					local cmd = get_wrapper_cmd("gradlew") .. " installDebug -Pandroid.injected.device=" .. device
+					run_terminal(cmd, "Install to " .. device)
 				end)
 			end, { desc = "Install debug APK to device" })
 

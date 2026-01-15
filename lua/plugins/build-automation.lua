@@ -133,14 +133,22 @@ return {
 	{
 		"nvim-lua/plenary.nvim",
 		config = function()
+			-- Helper: Get wrapper command (cross-platform)
+			local function get_wrapper_cmd(base)
+				if vim.fn.has("win32") == 1 then
+					return base .. ".bat"
+				end
+				return "./" .. base
+			end
+
 			-- Quick build command
 			vim.api.nvim_create_user_command("Build", function()
 				local ft = vim.bo.filetype
 
 				if vim.fn.filereadable("build.gradle") == 1 or vim.fn.filereadable("build.gradle.kts") == 1 then
-					vim.cmd("terminal ./gradlew build")
+					vim.cmd("terminal " .. get_wrapper_cmd("gradlew") .. " build")
 				elseif vim.fn.filereadable("pom.xml") == 1 then
-					vim.cmd("terminal ./mvnw clean package")
+					vim.cmd("terminal " .. get_wrapper_cmd("mvnw") .. " clean package")
 				elseif vim.fn.filereadable("Cargo.toml") == 1 then
 					vim.cmd("terminal cargo build")
 				elseif vim.fn.filereadable("package.json") == 1 then
@@ -153,9 +161,9 @@ return {
 			-- Quick test command
 			vim.api.nvim_create_user_command("Test", function()
 				if vim.fn.filereadable("build.gradle") == 1 or vim.fn.filereadable("build.gradle.kts") == 1 then
-					vim.cmd("terminal ./gradlew test")
+					vim.cmd("terminal " .. get_wrapper_cmd("gradlew") .. " test")
 				elseif vim.fn.filereadable("pom.xml") == 1 then
-					vim.cmd("terminal ./mvnw test")
+					vim.cmd("terminal " .. get_wrapper_cmd("mvnw") .. " test")
 				elseif vim.fn.filereadable("Cargo.toml") == 1 then
 					vim.cmd("terminal cargo test")
 				elseif vim.fn.filereadable("package.json") == 1 then
