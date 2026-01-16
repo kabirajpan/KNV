@@ -50,7 +50,7 @@ if vim.g.neovide then
 	vim.keymap.set("n", "<C-=>", function()
 		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1
 	end)
-	vim.keymap.set("n", "<C-->", function()
+	vim.keymap.set("n", "<C-minus>", function()
 		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1
 	end)
 	vim.keymap.set("n", "<C-0>", function()

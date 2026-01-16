@@ -1,5 +1,6 @@
 return {
   "Exafunction/codeium.nvim",
+  enabled = false, -- Disabled due to plugin extraction error
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",

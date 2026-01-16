@@ -41,6 +41,13 @@ return {
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
 
+    -- Custom highlights for autocomplete menu (green for system completion)
+    vim.cmd([[
+      highlight CmpPmenu guibg=#1c1c1c guifg=#98c379
+      highlight CmpPmenuSel guibg=#3c3836 guifg=#b8bb26 gui=bold
+      highlight CmpPmenuBorder guifg=#98c379
+    ]])
+
     -- Custom snippets setup
     luasnip.config.setup({})
 
@@ -102,11 +109,11 @@ return {
       
       -- IMPORTANT: Source priority order
       sources = cmp.config.sources({
-        -- AI assistants get highest priority
-        { name = "copilot", priority = 1000, max_item_count = 3 },
-        { name = "codeium", priority = 900, max_item_count = 3 },
+        -- AI assistants disabled
+        -- { name = "copilot", priority = 1000, max_item_count = 3 },
+        -- { name = "codeium", priority = 900, max_item_count = 3 },
         
-        -- Core completion sources
+        -- Core completion sources (LSP, snippets, buffer, path)
         { name = "nvim_lsp", priority = 800, max_item_count = 20 },
         { name = "luasnip", priority = 700, max_item_count = 5 },
         

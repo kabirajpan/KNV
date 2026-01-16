@@ -31,7 +31,7 @@ return {
         py = { icon = "", color = "#3776ab", name = "Python" },
         js = { icon = "", color = "#f7df1e", name = "JavaScript" },
         ts = { icon = "", color = "#3178c6", name = "TypeScript" },
-        tsx = { icon = "󰜈", color = "#3178c6", name = "TypeScript JSX" },
+        tsx = { icon = "", color = "#3178c6", name = "TypeScript JSX" },
         jsx = { icon = "", color = "#61dafb", name = "JSX" },
         java = { icon = "", color = "#007396", name = "Java" },
         kt = { icon = "", color = "#7f52ff", name = "Kotlin" },
